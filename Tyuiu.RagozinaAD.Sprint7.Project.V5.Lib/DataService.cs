@@ -58,6 +58,41 @@
             }
             return Sort;
         }
+        public string[,] SortMin(string[,] matrix, int NumberColumn)
+        {
+            int[] col = new int[matrix.GetLength(0) - 1];
+            col[col.Length - 1] = Convert.ToInt32(matrix[matrix.GetLength(0) - 1, NumberColumn]);
+            for (int i = 0; i < col.Length - 1; i++)
+            {
+                col[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
+            }
+
+            Array.Sort(col, (x, y) => x.CompareTo(y));
+
+            string[,] SortMatrix = new string[matrix.GetLength(0), matrix.GetLength(1)];
+
+            for (int i = 0; i < SortMatrix.GetLength(1); i++)
+            {
+                SortMatrix[0, i] = matrix[0, i];
+            }
+
+            for (int i = 0; i < SortMatrix.GetLength(0) - 1; i++)
+            {
+                for (int j = 1; j < matrix.GetLength(0); j++)
+                {
+                    if (col[i] == Convert.ToInt32(matrix[j, NumberColumn]))
+                    {
+                        for (int c = 0; c < SortMatrix.GetLength(1); c++)
+                        {
+                            SortMatrix[i + 1, c] = matrix[j, c];
+                        }
+                        matrix[j, NumberColumn] = "-1";
+                        break;
+                    }
+                }
+            }
+            return SortMatrix;
+        }
         public string[,] Search(string[,] table, string n)
         {
             int s = 0;

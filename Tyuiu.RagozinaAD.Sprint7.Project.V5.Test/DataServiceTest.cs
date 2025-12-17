@@ -30,6 +30,30 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Test
         }
 
         [TestMethod]
+        public void SortMin()
+        {
+            DataService ds = new DataService();
+            string[,] tab =
+            {
+                {"Код","Название","Количество","Стоимость" },
+                {"1","Ручка шариковая","300","20"},
+                {"2","Бумага офисная","220","300"},
+                {"3","Скотч","150","90"},
+                {"4","Блокнот","130","150"}
+            };
+
+            string[,] res = ds.SortMin(tab, 2);
+            string[,] wait =
+            {
+                {"Код","Название","Количество","Стоимость" },
+                {"4","Блокнот","130","150"},
+                {"3","Скотч","150","90"},
+                {"2","Бумага офисная","220","300"},
+                {"1","Ручка шариковая","300","20"},
+            };
+            CollectionAssert.AreEqual(wait, res);
+        }
+        [TestMethod]
         public void TestSearch()
         {
             DataService ds = new DataService();
