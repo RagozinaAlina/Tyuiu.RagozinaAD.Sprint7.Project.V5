@@ -1,4 +1,7 @@
-﻿namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
+﻿using System.IO;
+using System.Text;
+
+namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
 {
     public class DataService
     {
@@ -15,9 +18,9 @@
             {
                 string strIndexI = str[i];
                 string[] strArr = strIndexI.Split(';');
-                for (int j = 0; j < strArr.Length; j++)
+                for (int c = 0; c < strArr.Length; c++)
                 {
-                    matrix[i, j] = strArr[j];
+                    matrix[i, c] = strArr[c];
                 }
             }
             return matrix;
@@ -117,6 +120,44 @@
                     }
                     table[i, 1] = "";
                     c++;
+                }
+            }
+            return res;
+        }
+        public string[] ArrayStrElements(string[,] table, int NumColumns)
+        {
+            int s = 0;
+            string strCountElements = "";
+            for (int i = 1; i < table.GetLength(0); i++)
+            {
+                s = 0;
+                for (int a = 1; a < i; a++)
+                {
+                    if (Convert.ToInt32(table[a, NumColumns]) == Convert.ToInt32(table[i, NumColumns]))
+                        s = 1;
+                }
+                if (s == 0)
+                    strCountElements += Convert.ToString(table[i, NumColumns]) + " ";
+            }
+            string[] str = strCountElements.Split(' ');
+            string[] res = new string[str.Length - 1];
+            for (int i = 0; i < res.Length; i++)
+            {
+                res[i] = str[i];
+            }
+
+
+            return res;
+        }
+        public int[] ArraySum(string[,] DataTable, string[] Entrance, int NumColumns)
+        {
+            int[] res = new int[Entrance.Length];
+            for (int i = 0; i < Entrance.Length; i++)
+            {
+                for (int j = 1; j < DataTable.GetLength(0); j++)
+                {
+                    if (Convert.ToInt32(Entrance[i]) == Convert.ToInt32(DataTable[j, NumColumns]))
+                        res[i] += 1;
                 }
             }
             return res;
