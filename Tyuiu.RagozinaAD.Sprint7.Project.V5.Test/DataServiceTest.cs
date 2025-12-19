@@ -92,7 +92,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Test
                 {"4","Блокнот","130","150"}
             };
 
-            string[] res = ds.ArrayStrElements(tab, 2);
+            string[] res = ds.ArrayStrElements(tab, 1);
             string[] wait = { "300", "220", "150","130" };
             CollectionAssert.AreEqual(wait, res);
         }

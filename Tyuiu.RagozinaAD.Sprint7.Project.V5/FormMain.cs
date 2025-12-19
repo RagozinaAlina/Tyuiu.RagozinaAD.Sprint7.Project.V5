@@ -24,5 +24,11 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             FormFile formFile = new FormFile();
             formFile.ShowDialog();
         }
+
+        private void buttonFilePost_Click(object sender, EventArgs e)
+        {
+            FormPost formPost = new FormPost();
+            formPost.ShowDialog();
+        }
     }
 }

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
 {
-    public partial class FormFile : Form
+    public partial class FormPost : Form
     {
-        public FormFile()
+        public FormPost()
         {
             InitializeComponent();
             openFileDialogTask.Filter = "Значения, разделённые запятыми (*.csv)|*.csv|Все файлы(*.*)|*.*";
@@ -32,10 +32,10 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
         static int columns;
         static string openFilePath;
 
-        string path = @"C:\Users\Алина\Desktop\source\repos\Tyuiu.RagozinaAD.Sprint7.Project.V5\DataSprint7\Товар.csv";
+        string path = @"C:\Users\Алина\Desktop\source\repos\Tyuiu.RagozinaAD.Sprint7.Project.V5\DataSprint7\Поставщики.csv";
 
         DataService ds = new DataService();
-        private void FormFile_Load(object sender, EventArgs e)
+        private void FormPost_Load(object sender, EventArgs e)
         {
 
         }
@@ -82,10 +82,9 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             }
         }
 
-        private void buttonSave_Click_1(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
-
-            saveFileDialogTask.FileName = "Измененные товары.csv";
+            saveFileDialogTask.FileName = "Измененный файл поставщики.csv";
             saveFileDialogTask.InitialDirectory = @"C:\Users\Алина\Desktop\source\repos\Tyuiu.RagozinaAD.Sprint7.Project.V5\DataSprint7";
             saveFileDialogTask.ShowDialog();
 
@@ -121,11 +120,10 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             }
         }
 
-
         private void buttonMin_Click(object sender, EventArgs e)
         {
             string[,] sort = ds.GetMatrix(path);
-            string[,] SortMin = ds.SortMax(sort, 3);
+            string[,] SortMin = ds.SortMax(sort, 2);
 
             for (int r = 0; r < SortMin.GetLength(0); r++)
             {
@@ -152,48 +150,9 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             buttonOpen.Enabled = true;
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private void buttonChart_Click(object sender, EventArgs e)
         {
-            if (textBoxSearch.Text == "")
-                MessageBox.Show("Поле поиска пустое!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            {
-                string[,] DataMatrix = ds.GetMatrix(path);
-
-                string[,] str = ds.Search(DataMatrix, textBoxSearch.Text);
-                try
-                {
-                    if (str[0, 0] == null)
-                        MessageBox.Show("Такого нет в базе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                    {
-                        for (int r = 1; r < DataMatrix.GetLength(0); r++)
-                        {
-                            for (int c = 0; c < DataMatrix.GetLength(1); c++)
-                            {
-                                dataGridViewTab1.Rows[r].Cells[c].Value = "";
-                            }
-                        }
-
-                        for (int r = 0; r < str.GetLength(0); r++)
-                        {
-                            for (int c = 0; c < str.GetLength(1); c++)
-                            {
-                                dataGridViewTab1.Rows[r + 1].Cells[c].Value = str[r, c];
-                            }
-                        }
-
-                        dataGridViewTab1.Enabled = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Такого нет в базе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSearch.Text = "";
-                }
-
-            }
+            
         }
     }
 }
-

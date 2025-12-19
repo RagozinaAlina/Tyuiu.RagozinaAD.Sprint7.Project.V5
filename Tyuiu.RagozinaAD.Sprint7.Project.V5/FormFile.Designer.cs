@@ -54,7 +54,7 @@
             buttonOpen.Size = new Size(97, 57);
             buttonOpen.TabIndex = 0;
             buttonOpen.TextAlign = ContentAlignment.BottomCenter;
-            toolTip.SetToolTip(buttonOpen, "Открыть файл");
+            toolTip.SetToolTip(buttonOpen, "с");
             buttonOpen.UseVisualStyleBackColor = true;
             buttonOpen.Click += buttonOpen_Click;
             // 
@@ -107,7 +107,7 @@
             buttonMax.Size = new Size(244, 62);
             buttonMax.TabIndex = 6;
             buttonMax.Text = "Сортировка от меньшего к большему";
-            toolTip.SetToolTip(buttonMax, "Сортирует данные 4 столбца от меньшего к большему");
+            toolTip.SetToolTip(buttonMax, "Сортирует данные 3 столбца от меньшего к большему");
             buttonMax.UseVisualStyleBackColor = true;
             buttonMax.Click += buttonMax_Click;
             // 
@@ -145,7 +145,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(662, 354);
+            ClientSize = new Size(657, 348);
             Controls.Add(groupBoxSearch);
             Controls.Add(buttonMax);
             Controls.Add(buttonMin);
@@ -153,7 +153,7 @@
             Controls.Add(dataGridViewTab1);
             Controls.Add(buttonOpen);
             Name = "FormFile";
-            Text = "Обработка файлов";
+            Text = "Товары";
             Load += FormFile_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).EndInit();
             groupBoxSearch.ResumeLayout(false);
