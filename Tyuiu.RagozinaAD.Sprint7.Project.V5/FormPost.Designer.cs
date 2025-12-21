@@ -30,20 +30,22 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPost));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             buttonOpen = new Button();
             toolTip = new ToolTip(components);
             buttonSave = new Button();
+            buttonMin = new Button();
             dataGridViewTab1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             openFileDialogTask = new OpenFileDialog();
             saveFileDialogTask = new SaveFileDialog();
-            buttonMin = new Button();
-            chartInfo = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            buttonChart = new Button();
+            groupBox1 = new GroupBox();
+            buttonSearch = new Button();
+            textBoxSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)chartInfo).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonOpen
@@ -72,65 +74,95 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
+            // buttonMin
+            // 
+            buttonMin.Location = new Point(595, 22);
+            buttonMin.Name = "buttonMin";
+            buttonMin.Size = new Size(260, 73);
+            buttonMin.TabIndex = 3;
+            buttonMin.Text = "Сортировка от большего к меньшему";
+            toolTip.SetToolTip(buttonMin, "Сортирует данные 4 столбца по уменьшению");
+            buttonMin.UseVisualStyleBackColor = true;
+            buttonMin.Click += buttonMin_Click;
+            // 
             // dataGridViewTab1
             // 
             dataGridViewTab1.BackgroundColor = SystemColors.ScrollBar;
             dataGridViewTab1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTab1.ColumnHeadersVisible = false;
+            dataGridViewTab1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dataGridViewTab1.Location = new Point(115, 22);
             dataGridViewTab1.Name = "dataGridViewTab1";
             dataGridViewTab1.RowHeadersVisible = false;
             dataGridViewTab1.RowHeadersWidth = 51;
-            dataGridViewTab1.Size = new Size(312, 327);
+            dataGridViewTab1.Size = new Size(474, 327);
             dataGridViewTab1.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Номер";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Поставщик";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 125;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Дата поставки";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 125;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Количество";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Width = 125;
             // 
             // openFileDialogTask
             // 
             openFileDialogTask.FileName = "openFileDialog1";
             // 
-            // buttonMin
+            // groupBox1
             // 
-            buttonMin.Location = new Point(470, 30);
-            buttonMin.Name = "buttonMin";
-            buttonMin.Size = new Size(260, 73);
-            buttonMin.TabIndex = 3;
-            buttonMin.Text = "Сорт";
-            buttonMin.UseVisualStyleBackColor = true;
-            buttonMin.Click += buttonMin_Click;
+            groupBox1.Controls.Add(buttonSearch);
+            groupBox1.Controls.Add(textBoxSearch);
+            groupBox1.Location = new Point(595, 101);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(260, 146);
+            groupBox1.TabIndex = 4;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Поиск поставщиков                 Введите данные";
             // 
-            // chartInfo
+            // buttonSearch
             // 
-            chartArea1.Name = "ChartArea1";
-            chartInfo.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartInfo.Legends.Add(legend1);
-            chartInfo.Location = new Point(459, 109);
-            chartInfo.Name = "chartInfo";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartInfo.Series.Add(series1);
-            chartInfo.Size = new Size(524, 424);
-            chartInfo.TabIndex = 4;
-            chartInfo.Text = "chart1";
+            buttonSearch.Location = new Point(6, 84);
+            buttonSearch.Name = "buttonSearch";
+            buttonSearch.Size = new Size(248, 48);
+            buttonSearch.TabIndex = 1;
+            buttonSearch.Text = "Поиск";
+            buttonSearch.UseVisualStyleBackColor = true;
+            buttonSearch.Click += buttonSearch_Click;
             // 
-            // buttonChart
+            // textBoxSearch
             // 
-            buttonChart.Location = new Point(134, 383);
-            buttonChart.Name = "buttonChart";
-            buttonChart.Size = new Size(130, 60);
-            buttonChart.TabIndex = 5;
-            buttonChart.Text = "button2";
-            buttonChart.UseVisualStyleBackColor = true;
-            buttonChart.Click += buttonChart_Click;
+            textBoxSearch.Location = new Point(6, 51);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(248, 27);
+            textBoxSearch.TabIndex = 0;
             // 
             // FormPost
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1048, 550);
-            Controls.Add(buttonChart);
-            Controls.Add(chartInfo);
+            ClientSize = new Size(896, 373);
+            Controls.Add(groupBox1);
             Controls.Add(buttonMin);
             Controls.Add(dataGridViewTab1);
             Controls.Add(buttonSave);
@@ -139,7 +171,8 @@
             Text = "Поставщики";
             Load += FormPost_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)chartInfo).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -151,9 +184,13 @@
         private DataGridView dataGridViewTab1;
         private OpenFileDialog openFileDialogTask;
         private SaveFileDialog saveFileDialogTask;
-        private Button button1;
         private Button buttonMin;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartInfo;
-        private Button buttonChart;
+        private GroupBox groupBox1;
+        private Button buttonSearch;
+        private TextBox textBoxSearch;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

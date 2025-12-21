@@ -123,7 +123,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
         private void buttonMin_Click(object sender, EventArgs e)
         {
             string[,] sort = ds.GetMatrix(path);
-            string[,] SortMin = ds.SortMax(sort, 2);
+            string[,] SortMin = ds.SortMax(sort, 3);
 
             for (int r = 0; r < SortMin.GetLength(0); r++)
             {
@@ -135,24 +135,47 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             buttonOpen.Enabled = true;
         }
 
-        private void buttonMax_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
-            string[,] sort = ds.GetMatrix(path);
-            string[,] SortMax = ds.SortMin(sort, 2);
-
-            for (int r = 0; r < SortMax.GetLength(0); r++)
+            if (textBoxSearch.Text == "")
+                MessageBox.Show("Поле поиска пустое!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                for (int c = 0; c < SortMax.GetLength(1); c++)
-                {
-                    dataGridViewTab1.Rows[r].Cells[c].Value = SortMax[r, c];
-                }
-            }
-            buttonOpen.Enabled = true;
-        }
+                string[,] DataMatrix = ds.GetMatrix(path);
 
-        private void buttonChart_Click(object sender, EventArgs e)
-        {
-            
+                string[,] str = ds.Search(DataMatrix, textBoxSearch.Text);
+                try
+                {
+                    if (str[0, 0] == null)
+                        MessageBox.Show("Такого нет в базе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        for (int r = 1; r < DataMatrix.GetLength(0); r++)
+                        {
+                            for (int c = 0; c < DataMatrix.GetLength(1); c++)
+                            {
+                                dataGridViewTab1.Rows[r].Cells[c].Value = "";
+                            }
+                        }
+
+                        for (int r = 0; r < str.GetLength(0); r++)
+                        {
+                            for (int c = 0; c < str.GetLength(1); c++)
+                            {
+                                dataGridViewTab1.Rows[r + 1].Cells[c].Value = str[r, c];
+                            }
+                        }
+
+                        dataGridViewTab1.Enabled = true;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Такого нет в базе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxSearch.Text = "";
+                }
+
+            }
         }
     }
 }

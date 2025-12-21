@@ -5,6 +5,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
 {
     public class DataService
     {
+        public int len = 0;
         public string[,] GetMatrix(string path)
         {
             string[] str = File.ReadAllLines(path);
@@ -24,6 +25,41 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
                 }
             }
             return matrix;
+        }
+        
+        public double FindMinValue(double[] array)
+        {
+            return array.Min();
+        }
+
+        public double FindMaxValue(double[] array)
+        {
+            return array.Max();
+        }
+        public double[] LoadFromDataFile(string path)
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    len++;
+                }
+            }
+            double[] numsArray = new double[len];
+
+            int index = 0;
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    numsArray[index] = Convert.ToDouble(line);
+                    index++;
+                }
+            }
+            numsArray = numsArray.Where(val => val > 5).ToArray();
+            return numsArray;
         }
 
         public string[,] SortMax(string[,] matrix, int NumberColumn)

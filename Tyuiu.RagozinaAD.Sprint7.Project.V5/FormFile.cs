@@ -151,48 +151,41 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             }
             buttonOpen.Enabled = true;
         }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
+        public double[] GetArrayRow(int row)
         {
-            if (textBoxSearch.Text == "")
-                MessageBox.Show("Поле поиска пустое!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            double[] array = new double[dataGridViewTab1.Rows.Count];
+            for (int i = 0; i < dataGridViewTab1.Rows.Count; i++)
             {
-                string[,] DataMatrix = ds.GetMatrix(path);
-
-                string[,] str = ds.Search(DataMatrix, textBoxSearch.Text);
-                try
-                {
-                    if (str[0, 0] == null)
-                        MessageBox.Show("Такого нет в базе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                    {
-                        for (int r = 1; r < DataMatrix.GetLength(0); r++)
-                        {
-                            for (int c = 0; c < DataMatrix.GetLength(1); c++)
-                            {
-                                dataGridViewTab1.Rows[r].Cells[c].Value = "";
-                            }
-                        }
-
-                        for (int r = 0; r < str.GetLength(0); r++)
-                        {
-                            for (int c = 0; c < str.GetLength(1); c++)
-                            {
-                                dataGridViewTab1.Rows[r + 1].Cells[c].Value = str[r, c];
-                            }
-                        }
-
-                        dataGridViewTab1.Enabled = true;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Такого нет в базе", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    textBoxSearch.Text = "";
-                }
-
+                array[i] = dataGridViewTab1.Rows[i].Cells[0].Value == null ? array[i - 1] : Convert.ToInt32(dataGridViewTab1.Rows[i].Cells[row].Value);
             }
+            return array;
+        }
+        private void buttonMinPrice_Click(object sender, EventArgs e)
+        {
+            double[] array = GetArrayRow(3);
+            textBoxResult.Text = ds.FindMinValue(array).ToString();
+        }
+
+        private void buttonMaxPrice_Click(object sender, EventArgs e)
+        {
+            double[] array = GetArrayRow(3);
+            textBoxResult.Text = ds.FindMaxValue(array).ToString();
+        }
+
+        private void textBoxResult_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewTab1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            FormHelp formHelp = new FormHelp();
+            formHelp.ShowDialog();
         }
     }
 }
