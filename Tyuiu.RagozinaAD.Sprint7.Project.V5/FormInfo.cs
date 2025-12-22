@@ -21,5 +21,10 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
         {
             this.Close();
         }
+
+        private void groupBoxOk_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -42,11 +42,11 @@
             buttonMin = new Button();
             toolTip = new ToolTip(components);
             buttonMax = new Button();
+            buttonHelp = new Button();
             buttonMinPrice = new Button();
             textBoxResult = new TextBox();
             buttonMaxPrice = new Button();
             groupBoxSearch = new GroupBox();
-            buttonHelp = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).BeginInit();
             groupBoxSearch.SuspendLayout();
             SuspendLayout();
@@ -60,7 +60,7 @@
             buttonOpen.Size = new Size(97, 57);
             buttonOpen.TabIndex = 0;
             buttonOpen.TextAlign = ContentAlignment.BottomCenter;
-            toolTip.SetToolTip(buttonOpen, "с");
+            toolTip.SetToolTip(buttonOpen, "Открыть файл");
             buttonOpen.UseVisualStyleBackColor = true;
             buttonOpen.Click += buttonOpen_Click;
             // 
@@ -146,6 +146,17 @@
             buttonMax.UseVisualStyleBackColor = true;
             buttonMax.Click += buttonMax_Click;
             // 
+            // buttonHelp
+            // 
+            buttonHelp.Location = new Point(12, 281);
+            buttonHelp.Name = "buttonHelp";
+            buttonHelp.Size = new Size(97, 55);
+            buttonHelp.TabIndex = 14;
+            buttonHelp.Text = "Справка";
+            toolTip.SetToolTip(buttonHelp, "Перевод товаров");
+            buttonHelp.UseVisualStyleBackColor = true;
+            buttonHelp.Click += buttonHelp_Click;
+            // 
             // buttonMinPrice
             // 
             buttonMinPrice.Location = new Point(8, 26);
@@ -184,17 +195,6 @@
             groupBoxSearch.TabIndex = 13;
             groupBoxSearch.TabStop = false;
             groupBoxSearch.Text = "Поиск";
-            // 
-            // buttonHelp
-            // 
-            buttonHelp.Location = new Point(12, 281);
-            buttonHelp.Name = "buttonHelp";
-            buttonHelp.Size = new Size(97, 55);
-            buttonHelp.TabIndex = 14;
-            buttonHelp.Text = "Справка";
-            toolTip.SetToolTip(buttonHelp, "Перевод товаров");
-            buttonHelp.UseVisualStyleBackColor = true;
-            buttonHelp.Click += buttonHelp_Click;
             // 
             // FormFile
             // 

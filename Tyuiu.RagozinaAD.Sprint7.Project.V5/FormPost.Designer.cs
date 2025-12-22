@@ -34,6 +34,9 @@
             toolTip = new ToolTip(components);
             buttonSave = new Button();
             buttonMin = new Button();
+            buttonFindValue = new Button();
+            textBoxFindValue = new TextBox();
+            buttonFind = new Button();
             dataGridViewTab1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -42,10 +45,11 @@
             openFileDialogTask = new OpenFileDialog();
             saveFileDialogTask = new SaveFileDialog();
             groupBox1 = new GroupBox();
-            buttonSearch = new Button();
-            textBoxSearch = new TextBox();
+            textBoxResult = new TextBox();
+            groupBox2 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).BeginInit();
             groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // buttonOpen
@@ -84,6 +88,36 @@
             toolTip.SetToolTip(buttonMin, "Сортирует данные 4 столбца по уменьшению");
             buttonMin.UseVisualStyleBackColor = true;
             buttonMin.Click += buttonMin_Click;
+            // 
+            // buttonFindValue
+            // 
+            buttonFindValue.Location = new Point(6, 82);
+            buttonFindValue.Name = "buttonFindValue";
+            buttonFindValue.Size = new Size(248, 53);
+            buttonFindValue.TabIndex = 5;
+            buttonFindValue.Text = "Поиск";
+            toolTip.SetToolTip(buttonFindValue, "Нажмите, чтобы выполнить поиск");
+            buttonFindValue.UseVisualStyleBackColor = true;
+            buttonFindValue.Click += buttonFindValue_Click;
+            // 
+            // textBoxFindValue
+            // 
+            textBoxFindValue.Location = new Point(6, 49);
+            textBoxFindValue.Name = "textBoxFindValue";
+            textBoxFindValue.Size = new Size(248, 27);
+            textBoxFindValue.TabIndex = 6;
+            toolTip.SetToolTip(textBoxFindValue, "Введите данные для поиска");
+            // 
+            // buttonFind
+            // 
+            buttonFind.Location = new Point(6, 45);
+            buttonFind.Name = "buttonFind";
+            buttonFind.Size = new Size(248, 42);
+            buttonFind.TabIndex = 5;
+            buttonFind.Text = "Поиск";
+            toolTip.SetToolTip(buttonFind, "Нажмите для поиска");
+            buttonFind.UseVisualStyleBackColor = true;
+            buttonFind.Click += buttonFind_Click;
             // 
             // dataGridViewTab1
             // 
@@ -131,37 +165,41 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(buttonSearch);
-            groupBox1.Controls.Add(textBoxSearch);
+            groupBox1.BackColor = SystemColors.ControlLightLight;
+            groupBox1.Controls.Add(buttonFindValue);
+            groupBox1.Controls.Add(textBoxFindValue);
             groupBox1.Location = new Point(595, 101);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(260, 146);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Поиск поставщиков                 Введите данные";
+            groupBox1.Text = "Поиск                                        Введите данные";
             // 
-            // buttonSearch
+            // textBoxResult
             // 
-            buttonSearch.Location = new Point(6, 84);
-            buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(248, 48);
-            buttonSearch.TabIndex = 1;
-            buttonSearch.Text = "Поиск";
-            buttonSearch.UseVisualStyleBackColor = true;
-            buttonSearch.Click += buttonSearch_Click;
+            textBoxResult.Location = new Point(6, 93);
+            textBoxResult.Name = "textBoxResult";
+            textBoxResult.Size = new Size(248, 27);
+            textBoxResult.TabIndex = 6;
             // 
-            // textBoxSearch
+            // groupBox2
             // 
-            textBoxSearch.Location = new Point(6, 51);
-            textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(248, 27);
-            textBoxSearch.TabIndex = 0;
+            groupBox2.BackColor = SystemColors.ControlLightLight;
+            groupBox2.Controls.Add(buttonFind);
+            groupBox2.Controls.Add(textBoxResult);
+            groupBox2.Location = new Point(595, 253);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(260, 127);
+            groupBox2.TabIndex = 7;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Поиск максимального количества товара";
             // 
             // FormPost
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 373);
+            ClientSize = new Size(871, 391);
+            Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(buttonMin);
             Controls.Add(dataGridViewTab1);
@@ -173,6 +211,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -186,11 +226,14 @@
         private SaveFileDialog saveFileDialogTask;
         private Button buttonMin;
         private GroupBox groupBox1;
-        private Button buttonSearch;
-        private TextBox textBoxSearch;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private Button buttonFindValue;
+        private TextBox textBoxFindValue;
+        private Button buttonFind;
+        private TextBox textBoxResult;
+        private GroupBox groupBox2;
     }
 }

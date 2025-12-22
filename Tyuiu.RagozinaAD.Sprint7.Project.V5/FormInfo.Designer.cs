@@ -44,12 +44,15 @@
             // 
             // groupBoxOk
             // 
+            groupBoxOk.Font = new Font("Segoe UI", 11F);
+            groupBoxOk.ForeColor = SystemColors.ActiveCaptionText;
             groupBoxOk.Location = new Point(8, 9);
             groupBoxOk.Name = "groupBoxOk";
             groupBoxOk.Size = new Size(338, 199);
             groupBoxOk.TabIndex = 1;
             groupBoxOk.TabStop = false;
-            groupBoxOk.Text = "Данная программа предназначена для просмотра таблиц. Она помогает найти нужные данные.";
+            groupBoxOk.Text = "Данная программа предназначена для просмотра таблиц. Она помогает сортировать и находить данные.";
+            groupBoxOk.Enter += groupBoxOk_Enter;
             // 
             // FormInfo
             // 

@@ -33,12 +33,14 @@
             toolTipTask = new ToolTip(components);
             buttonFile = new Button();
             buttonFilePost = new Button();
+            panelTop = new Panel();
+            panelTop.SuspendLayout();
             SuspendLayout();
             // 
             // buttonInfo
             // 
             buttonInfo.BackColor = SystemColors.ScrollBar;
-            buttonInfo.Location = new Point(12, 12);
+            buttonInfo.Location = new Point(12, 121);
             buttonInfo.Name = "buttonInfo";
             buttonInfo.Size = new Size(137, 103);
             buttonInfo.TabIndex = 0;
@@ -54,7 +56,7 @@
             // buttonFile
             // 
             buttonFile.BackColor = SystemColors.ScrollBar;
-            buttonFile.Location = new Point(12, 135);
+            buttonFile.Location = new Point(12, 12);
             buttonFile.Name = "buttonFile";
             buttonFile.Size = new Size(137, 103);
             buttonFile.TabIndex = 1;
@@ -66,7 +68,7 @@
             // buttonFilePost
             // 
             buttonFilePost.BackColor = SystemColors.ScrollBar;
-            buttonFilePost.Location = new Point(155, 135);
+            buttonFilePost.Location = new Point(155, 12);
             buttonFilePost.Name = "buttonFilePost";
             buttonFilePost.Size = new Size(137, 103);
             buttonFilePost.TabIndex = 2;
@@ -75,18 +77,28 @@
             buttonFilePost.UseVisualStyleBackColor = false;
             buttonFilePost.Click += buttonFilePost_Click;
             // 
+            // panelTop
+            // 
+            panelTop.Controls.Add(buttonFilePost);
+            panelTop.Controls.Add(buttonInfo);
+            panelTop.Controls.Add(buttonFile);
+            panelTop.Dock = DockStyle.Top;
+            panelTop.Location = new Point(0, 0);
+            panelTop.Name = "panelTop";
+            panelTop.Size = new Size(438, 236);
+            panelTop.TabIndex = 3;
+            // 
             // FormSprint
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(800, 450);
-            Controls.Add(buttonFilePost);
-            Controls.Add(buttonFile);
-            Controls.Add(buttonInfo);
+            ClientSize = new Size(438, 353);
+            Controls.Add(panelTop);
             Name = "FormSprint";
             Text = "Оптовая база";
             Load += FormSprint_Load;
+            panelTop.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -96,5 +108,6 @@
         private ToolTip toolTipTask;
         private Button buttonFile;
         private Button buttonFilePost;
+        private Panel panelTop;
     }
 }
