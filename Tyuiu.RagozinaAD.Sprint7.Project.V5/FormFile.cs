@@ -52,7 +52,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                 rows = matrix.GetLength(0);
                 columns = matrix.GetLength(1);
 
-                dataGridViewTab1.RowCount = rows + 1;
+                dataGridViewTab1.RowCount = rows ;
                 dataGridViewTab1.ColumnCount = columns;
 
                 for (int i = 0; i < rows; i++)
@@ -62,19 +62,6 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                         dataGridViewTab1.Rows[i].Cells[j].Value = matrix[i, j];
                     }
                 }
-                dataGridViewTab1.AutoResizeColumns();
-                dataGridViewTab1.ScrollBars = ScrollBars.Both;
-                for (int i = 0; i < dataGridViewTab1.RowCount - 1; i++)
-                {
-
-                    if (dataGridViewTab1.Rows[i].Cells[3].Value.ToString() == "")
-                    {
-                        dataGridViewTab1.Rows.RemoveAt(i);
-                        i--;
-                    }
-                }
-
-
             }
             catch
             {
@@ -154,16 +141,11 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
         public double[] GetArrayRow(int row)
         {
             double[] array = new double[dataGridViewTab1.Rows.Count];
-            for (int i = 0; i < dataGridViewTab1.Rows.Count; i++)
+            for (int i = 1; i < dataGridViewTab1.Rows.Count; i++)
             {
                 array[i] = dataGridViewTab1.Rows[i].Cells[0].Value == null ? array[i - 1] : Convert.ToInt32(dataGridViewTab1.Rows[i].Cells[row].Value);
             }
             return array;
-        }
-        private void buttonMinPrice_Click(object sender, EventArgs e)
-        {
-            double[] array = GetArrayRow(3);
-            textBoxResult.Text = ds.FindMinValue(array).ToString();
         }
 
         private void buttonMaxPrice_Click(object sender, EventArgs e)

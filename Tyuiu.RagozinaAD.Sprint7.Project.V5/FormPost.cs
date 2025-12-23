@@ -52,7 +52,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                 rows = matrix.GetLength(0);
                 columns = matrix.GetLength(1);
 
-                dataGridViewTab1.RowCount = rows + 1;
+                dataGridViewTab1.RowCount = rows ;
                 dataGridViewTab1.ColumnCount = columns;
 
                 for (int i = 0; i < rows; i++)
@@ -62,8 +62,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                         dataGridViewTab1.Rows[i].Cells[j].Value = matrix[i, j];
                     }
                 }
-                dataGridViewTab1.AutoResizeColumns();
-                dataGridViewTab1.ScrollBars = ScrollBars.Both;
+                
                 for (int i = 0; i < dataGridViewTab1.RowCount - 1; i++)
                 {
 

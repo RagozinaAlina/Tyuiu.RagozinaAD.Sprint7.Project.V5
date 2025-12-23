@@ -43,7 +43,6 @@
             toolTip = new ToolTip(components);
             buttonMax = new Button();
             buttonHelp = new Button();
-            buttonMinPrice = new Button();
             textBoxResult = new TextBox();
             buttonMaxPrice = new Button();
             groupBoxSearch = new GroupBox();
@@ -127,7 +126,7 @@
             buttonMin.Size = new Size(266, 62);
             buttonMin.TabIndex = 5;
             buttonMin.Text = "Сортировка от большего к меньшему";
-            toolTip.SetToolTip(buttonMin, "Сортирует данные 4 столбца от большего к меньшего");
+            toolTip.SetToolTip(buttonMin, "Сортирует данные 4 столбца от большего к меньшему");
             buttonMin.UseVisualStyleBackColor = true;
             buttonMin.Click += buttonMin_Click;
             // 
@@ -157,16 +156,6 @@
             buttonHelp.UseVisualStyleBackColor = true;
             buttonHelp.Click += buttonHelp_Click;
             // 
-            // buttonMinPrice
-            // 
-            buttonMinPrice.Location = new Point(8, 26);
-            buttonMinPrice.Name = "buttonMinPrice";
-            buttonMinPrice.Size = new Size(131, 91);
-            buttonMinPrice.TabIndex = 10;
-            buttonMinPrice.Text = "Поиск минимальной цены товара";
-            buttonMinPrice.UseVisualStyleBackColor = true;
-            buttonMinPrice.Click += buttonMinPrice_Click;
-            // 
             // textBoxResult
             // 
             textBoxResult.Location = new Point(8, 123);
@@ -176,9 +165,9 @@
             // 
             // buttonMaxPrice
             // 
-            buttonMaxPrice.Location = new Point(145, 26);
+            buttonMaxPrice.Location = new Point(6, 26);
             buttonMaxPrice.Name = "buttonMaxPrice";
-            buttonMaxPrice.Size = new Size(121, 91);
+            buttonMaxPrice.Size = new Size(260, 91);
             buttonMaxPrice.TabIndex = 12;
             buttonMaxPrice.Text = "Поиск максимальной цены товара";
             buttonMaxPrice.UseVisualStyleBackColor = true;
@@ -188,7 +177,6 @@
             // 
             groupBoxSearch.Controls.Add(textBoxResult);
             groupBoxSearch.Controls.Add(buttonMaxPrice);
-            groupBoxSearch.Controls.Add(buttonMinPrice);
             groupBoxSearch.Location = new Point(518, 158);
             groupBoxSearch.Name = "groupBoxSearch";
             groupBoxSearch.Size = new Size(272, 164);
@@ -227,7 +215,6 @@
         private Button buttonMin;
         private ToolTip toolTip;
         private Button buttonMax;
-        private Button buttonMinPrice;
         private TextBox textBoxResult;
         private Button buttonMaxPrice;
         private GroupBox groupBoxSearch;
