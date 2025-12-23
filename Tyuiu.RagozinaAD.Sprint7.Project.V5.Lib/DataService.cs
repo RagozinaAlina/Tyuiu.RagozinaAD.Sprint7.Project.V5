@@ -44,30 +44,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
         {
             return array.Max();
         }
-        public double[] LoadFromDataFile(string path)
-        {
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    len++;
-                }
-            }
-            double[] numsArray = new double[len];
-
-            int index = 0;
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    numsArray[index] = Convert.ToDouble(line);
-                    index++;
-                }
-            }
-            return numsArray;
-        }
+        
 
         public string[,] SortMax(string[,] matrix, int NumberColumn)
         {
