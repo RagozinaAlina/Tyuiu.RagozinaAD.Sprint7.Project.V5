@@ -30,11 +30,5 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             FormPost formPost = new FormPost();
             formPost.ShowDialog();
         }
-
-        private void buttonChart_Click(object sender, EventArgs e)
-        {
-            FormChart formChart = new FormChart();
-            formChart.ShowDialog();
-        }
     }
 }
