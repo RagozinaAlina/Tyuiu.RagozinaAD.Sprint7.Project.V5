@@ -20,13 +20,13 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             openFileDialogTask.Filter = "Значения, разделённые запятыми (*.csv)|*.csv|Все файлы(*.*)|*.*";
             saveFileDialogTask.Filter = "Значения, разделённые запятыми(*.csv)| *.csv | Все файлы(*.*) | *.* ";
 
-            dataGridViewTab1.RowCount = 100;
-            dataGridViewTab1.ColumnCount = 100;
-            for (int i = 0; i < 100; i++)
+            dataGridViewTab1.RowCount = 10;
+            dataGridViewTab1.ColumnCount = 10;
+            for (int i = 0; i < 10; i++)
             {
                 dataGridViewTab1.Columns[i].Width = 130;
             }
-            dataGridViewTab1.Columns[2].Width = 180;
+            dataGridViewTab1.Columns[5].Width = 150;
         }
         static int rows;
         static int columns;
@@ -109,7 +109,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                 {
                     if (j != columns - 1)
                     {
-                        str = str + dataGridViewTab1.Rows[i].Cells[j].Value + "; ";
+                        str = str + dataGridViewTab1.Rows[i].Cells[j].Value + ";";
                     }
                     else
                     {
@@ -186,6 +186,11 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
         {
             FormHelp formHelp = new FormHelp();
             formHelp.ShowDialog();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

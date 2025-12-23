@@ -42,7 +42,7 @@
             buttonInfo.BackColor = SystemColors.ScrollBar;
             buttonInfo.Location = new Point(12, 121);
             buttonInfo.Name = "buttonInfo";
-            buttonInfo.Size = new Size(137, 103);
+            buttonInfo.Size = new Size(198, 103);
             buttonInfo.TabIndex = 0;
             buttonInfo.Text = "Данные о программе";
             toolTipTask.SetToolTip(buttonInfo, "Нажмите, чтобы узнать данные о программе");
@@ -56,9 +56,9 @@
             // buttonFile
             // 
             buttonFile.BackColor = SystemColors.ScrollBar;
-            buttonFile.Location = new Point(12, 12);
+            buttonFile.Location = new Point(231, 12);
             buttonFile.Name = "buttonFile";
-            buttonFile.Size = new Size(137, 103);
+            buttonFile.Size = new Size(198, 103);
             buttonFile.TabIndex = 1;
             buttonFile.Text = "Работа с файлом \"Товар\"";
             toolTipTask.SetToolTip(buttonFile, "Нажмите, чтобы начать работу с файлом");
@@ -68,9 +68,9 @@
             // buttonFilePost
             // 
             buttonFilePost.BackColor = SystemColors.ScrollBar;
-            buttonFilePost.Location = new Point(155, 12);
+            buttonFilePost.Location = new Point(12, 12);
             buttonFilePost.Name = "buttonFilePost";
-            buttonFilePost.Size = new Size(137, 103);
+            buttonFilePost.Size = new Size(198, 103);
             buttonFilePost.TabIndex = 2;
             buttonFilePost.Text = "Работа с файлом \"Поставщики\"";
             toolTipTask.SetToolTip(buttonFilePost, "Нажмите, чтобы начать работу с файлом");
@@ -85,7 +85,7 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(438, 236);
+            panelTop.Size = new Size(676, 351);
             panelTop.TabIndex = 3;
             // 
             // FormSprint
@@ -93,7 +93,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Menu;
-            ClientSize = new Size(438, 353);
+            ClientSize = new Size(676, 353);
             Controls.Add(panelTop);
             Name = "FormSprint";
             Text = "Оптовая база";

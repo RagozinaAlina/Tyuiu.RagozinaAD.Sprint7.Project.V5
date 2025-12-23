@@ -26,7 +26,15 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
             }
             return matrix;
         }
-        
+        public double FindTotalValue(double[] array)
+        {
+            double result = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                result += array[i];
+            }
+            return Math.Round(result, 3);
+        }
         public double FindMinValue(double[] array)
         {
             return array.Min();
@@ -58,20 +66,19 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
                     index++;
                 }
             }
-            numsArray = numsArray.Where(val => val > 5).ToArray();
             return numsArray;
         }
 
         public string[,] SortMax(string[,] matrix, int NumberColumn)
         {
-            int[] col = new int[matrix.GetLength(0) - 1];
-            col[col.Length - 1] = Convert.ToInt32(matrix[matrix.GetLength(0) - 1, NumberColumn]);
-            for (int i = 0; i < col.Length - 1; i++)
+            int[] с = new int[matrix.GetLength(0) - 1];
+            с[с.Length - 1] = Convert.ToInt32(matrix[matrix.GetLength(0) - 1, NumberColumn]);
+            for (int i = 0; i < с.Length - 1; i++)
             {
-                col[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
+                с[i] = Convert.ToInt32(matrix[i + 1, NumberColumn]);
             }
 
-            Array.Sort(col, (x, y) => y.CompareTo(x));
+            Array.Sort(с, (x, y) => y.CompareTo(x));
 
             string[,] Sort = new string[matrix.GetLength(0), matrix.GetLength(1)];
 
@@ -84,7 +91,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
             {
                 for (int j = 1; j < matrix.GetLength(0); j++)
                 {
-                    if (col[i] == Convert.ToInt32(matrix[j, NumberColumn]))
+                    if (с[i] == Convert.ToInt32(matrix[j, NumberColumn]))
                     {
                         for (int c = 0; c < Sort.GetLength(1); c++)
                         {
@@ -156,44 +163,6 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5.Lib
                     }
                     table[i, 1] = "";
                     c++;
-                }
-            }
-            return res;
-        }
-        public string[] ArrayStrElements(string[,] table, int NumColumns)
-        {
-            int s = 0;
-            string strCountElements = "";
-            for (int i = 1; i < table.GetLength(0); i++)
-            {
-                s = 0;
-                for (int a = 1; a < i; a++)
-                {
-                    if (Convert.ToInt32(table[a, NumColumns]) == Convert.ToInt32(table[i, NumColumns]))
-                        s = 1;
-                }
-                if (s == 0)
-                    strCountElements += Convert.ToString(table[i, NumColumns]) + " ";
-            }
-            string[] str = strCountElements.Split(' ');
-            string[] res = new string[str.Length - 1];
-            for (int i = 0; i < res.Length; i++)
-            {
-                res[i] = str[i];
-            }
-
-
-            return res;
-        }
-        public int[] ArraySum(string[,] DataTable, string[] Entrance, int NumColumns)
-        {
-            int[] res = new int[Entrance.Length];
-            for (int i = 0; i < Entrance.Length; i++)
-            {
-                for (int j = 1; j < DataTable.GetLength(0); j++)
-                {
-                    if (Convert.ToInt32(Entrance[i]) == Convert.ToInt32(DataTable[j, NumColumns]))
-                        res[i] += 1;
                 }
             }
             return res;

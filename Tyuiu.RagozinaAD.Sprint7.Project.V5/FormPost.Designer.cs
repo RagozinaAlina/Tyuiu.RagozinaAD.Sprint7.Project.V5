@@ -33,7 +33,6 @@
             buttonOpen = new Button();
             toolTip = new ToolTip(components);
             buttonSave = new Button();
-            buttonMin = new Button();
             buttonFindValue = new Button();
             textBoxFindValue = new TextBox();
             buttonFind = new Button();
@@ -47,9 +46,14 @@
             groupBox1 = new GroupBox();
             textBoxResult = new TextBox();
             groupBox2 = new GroupBox();
+            buttonFind1 = new Button();
+            groupBox3 = new GroupBox();
+            textBoxResult1 = new TextBox();
+            buttonDone = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // buttonOpen
@@ -78,17 +82,6 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
-            // buttonMin
-            // 
-            buttonMin.Location = new Point(595, 22);
-            buttonMin.Name = "buttonMin";
-            buttonMin.Size = new Size(260, 73);
-            buttonMin.TabIndex = 3;
-            buttonMin.Text = "Сортировка от большего к меньшему";
-            toolTip.SetToolTip(buttonMin, "Сортирует данные 4 столбца по уменьшению");
-            buttonMin.UseVisualStyleBackColor = true;
-            buttonMin.Click += buttonMin_Click;
-            // 
             // buttonFindValue
             // 
             buttonFindValue.Location = new Point(6, 82);
@@ -110,11 +103,11 @@
             // 
             // buttonFind
             // 
-            buttonFind.Location = new Point(6, 45);
+            buttonFind.Location = new Point(6, 71);
             buttonFind.Name = "buttonFind";
-            buttonFind.Size = new Size(248, 42);
+            buttonFind.Size = new Size(122, 42);
             buttonFind.TabIndex = 5;
-            buttonFind.Text = "Поиск";
+            buttonFind.Text = "Поиск (max)";
             toolTip.SetToolTip(buttonFind, "Нажмите для поиска");
             buttonFind.UseVisualStyleBackColor = true;
             buttonFind.Click += buttonFind_Click;
@@ -165,10 +158,10 @@
             // 
             // groupBox1
             // 
-            groupBox1.BackColor = SystemColors.ControlLightLight;
+            groupBox1.BackColor = SystemColors.Control;
             groupBox1.Controls.Add(buttonFindValue);
             groupBox1.Controls.Add(textBoxFindValue);
-            groupBox1.Location = new Point(595, 101);
+            groupBox1.Location = new Point(595, 22);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(260, 146);
             groupBox1.TabIndex = 4;
@@ -177,31 +170,73 @@
             // 
             // textBoxResult
             // 
-            textBoxResult.Location = new Point(6, 93);
+            textBoxResult.Location = new Point(6, 119);
             textBoxResult.Name = "textBoxResult";
             textBoxResult.Size = new Size(248, 27);
             textBoxResult.TabIndex = 6;
+            textBoxResult.TextChanged += textBoxResult_TextChanged;
             // 
             // groupBox2
             // 
-            groupBox2.BackColor = SystemColors.ControlLightLight;
+            groupBox2.BackColor = SystemColors.Control;
+            groupBox2.Controls.Add(buttonFind1);
             groupBox2.Controls.Add(buttonFind);
             groupBox2.Controls.Add(textBoxResult);
-            groupBox2.Location = new Point(595, 253);
+            groupBox2.Location = new Point(595, 187);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(260, 127);
+            groupBox2.Size = new Size(260, 162);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Поиск максимального количества товара";
+            groupBox2.Text = "Поиск максимального и минимального количества товара";
+            // 
+            // buttonFind1
+            // 
+            buttonFind1.Location = new Point(134, 71);
+            buttonFind1.Name = "buttonFind1";
+            buttonFind1.Size = new Size(120, 42);
+            buttonFind1.TabIndex = 7;
+            buttonFind1.Text = "Поиск (min)";
+            toolTip.SetToolTip(buttonFind1, "Нажмите для поиска");
+            buttonFind1.UseVisualStyleBackColor = true;
+            buttonFind1.Click += buttonFind1_Click;
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(textBoxResult1);
+            groupBox3.Controls.Add(buttonDone);
+            groupBox3.Location = new Point(867, 22);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(159, 146);
+            groupBox3.TabIndex = 8;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Общее количество товара";
+            // 
+            // textBoxResult1
+            // 
+            textBoxResult1.Location = new Point(6, 104);
+            textBoxResult1.Name = "textBoxResult1";
+            textBoxResult1.Size = new Size(147, 27);
+            textBoxResult1.TabIndex = 1;
+            // 
+            // buttonDone
+            // 
+            buttonDone.Location = new Point(6, 49);
+            buttonDone.Name = "buttonDone";
+            buttonDone.Size = new Size(147, 49);
+            buttonDone.TabIndex = 0;
+            buttonDone.Text = "Выполнить";
+            toolTip.SetToolTip(buttonDone, "Нажмите, чтобы выполнить рассчет");
+            buttonDone.UseVisualStyleBackColor = true;
+            buttonDone.Click += buttonDone_Click;
             // 
             // FormPost
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(871, 391);
+            ClientSize = new Size(1038, 378);
+            Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(buttonMin);
             Controls.Add(dataGridViewTab1);
             Controls.Add(buttonSave);
             Controls.Add(buttonOpen);
@@ -213,6 +248,8 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -224,7 +261,6 @@
         private DataGridView dataGridViewTab1;
         private OpenFileDialog openFileDialogTask;
         private SaveFileDialog saveFileDialogTask;
-        private Button buttonMin;
         private GroupBox groupBox1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
@@ -235,5 +271,9 @@
         private Button buttonFind;
         private TextBox textBoxResult;
         private GroupBox groupBox2;
+        private Button buttonFind1;
+        private GroupBox groupBox3;
+        private Button buttonDone;
+        private TextBox textBoxResult1;
     }
 }

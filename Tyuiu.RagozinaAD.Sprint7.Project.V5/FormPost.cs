@@ -20,13 +20,13 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
             openFileDialogTask.Filter = "Значения, разделённые запятыми (*.csv)|*.csv|Все файлы(*.*)|*.*";
             saveFileDialogTask.Filter = "Значения, разделённые запятыми(*.csv)| *.csv | Все файлы(*.*) | *.* ";
 
-            dataGridViewTab1.RowCount = 100;
-            dataGridViewTab1.ColumnCount = 100;
-            for (int i = 0; i < 100; i++)
+            dataGridViewTab1.RowCount = 10;
+            dataGridViewTab1.ColumnCount = 10;
+            for (int i = 0; i < 10; i++)
             {
                 dataGridViewTab1.Columns[i].Width = 130;
             }
-            dataGridViewTab1.Columns[2].Width = 180;
+            dataGridViewTab1.Columns[2].Width = 150;
         }
         static int rows;
         static int columns;
@@ -119,21 +119,6 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                 str = "";
             }
         }
-
-        private void buttonMin_Click(object sender, EventArgs e)
-        {
-            string[,] sort = ds.GetMatrix(path);
-            string[,] SortMin = ds.SortMax(sort, 3);
-
-            for (int r = 0; r < SortMin.GetLength(0); r++)
-            {
-                for (int c = 0; c < SortMin.GetLength(1); c++)
-                {
-                    dataGridViewTab1.Rows[r].Cells[c].Value = SortMin[r, c];
-                }
-            }
-            buttonOpen.Enabled = true;
-        }
         private void buttonFindValue_Click(object sender, EventArgs e)
         {
             if (textBoxFindValue.Text == "")
@@ -153,7 +138,7 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
                 }
             }
         }
-        public double[] GetArrayRow(int row) 
+        public double[] GetArrayRow(int row)
         {
             double[] array = new double[dataGridViewTab1.Rows.Count];
             for (int i = 0; i < dataGridViewTab1.Rows.Count; i++)
@@ -166,6 +151,23 @@ namespace Tyuiu.RagozinaAD.Sprint7.Project.V5
         {
             double[] array = GetArrayRow(3);
             textBoxResult.Text = ds.FindMaxValue(array).ToString();
+        }
+
+        private void buttonFind1_Click(object sender, EventArgs e)
+        {
+            double[] array = GetArrayRow(3);
+            textBoxResult.Text = ds.FindMinValue(array).ToString();
+        }
+
+        private void textBoxResult_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDone_Click(object sender, EventArgs e)
+        {
+            double[] array = GetArrayRow(3);
+            textBoxResult1.Text = ds.FindTotalValue(array).ToString();
         }
     }
 }

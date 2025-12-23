@@ -200,7 +200,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(805, 356);
+            ClientSize = new Size(844, 367);
             Controls.Add(buttonHelp);
             Controls.Add(groupBoxSearch);
             Controls.Add(buttonMax);
